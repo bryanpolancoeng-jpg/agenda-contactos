@@ -1,11 +1,11 @@
-"""Agenda de contactos en consola (versión original, sin bibliotecas)."""
+from busqueda import buscar_contactos
 
 CONTACTOS = [
-    {"nombre": "John Smith", "telefono": "7777-1111", "correo": "john@example.com"},
-    {"nombre": "María López", "telefono": "7777-2222", "correo": "maria@example.com"},
-    {"nombre": "Carlos Hernández", "telefono": "7777-3333", "correo": "carlos@example.com"},
-    {"nombre": "Ana Martínez", "telefono": "7777-4444", "correo": "ana@example.com"},
-    {"nombre": "Jonathan Pérez", "telefono": "7777-5555", "correo": "jonathan@example.com"},
+    {"nombre": "John Smith", "telefono": "7777-1111", "correo": "john@utla.com"},
+    {"nombre": "María López", "telefono": "7777-2222", "correo": "maria@utla.com"},
+    {"nombre": "Carlos Hernández", "telefono": "7777-3333", "correo": "carlos@utla.com"},
+    {"nombre": "Ana Martínez", "telefono": "7777-4444", "correo": "ana@utla.com"},
+    {"nombre": "Jonathan Pérez", "telefono": "7777-5555", "correo": "jonathan@jonathan.com"},
 ]
 
 
@@ -27,16 +27,6 @@ def agregar():
     print("Contacto agregado.")
 
 
-def buscar(texto):
-    """Búsqueda manual: solo encuentra si el texto está escrito exactamente igual."""
-    texto = texto.lower()
-    resultados = []
-    for c in CONTACTOS:
-        if texto in c["nombre"].lower():
-            resultados.append(c)
-    return resultados
-
-
 def menu():
     while True:
         print("\n=== AGENDA DE CONTACTOS ===")
@@ -52,7 +42,9 @@ def menu():
             agregar()
         elif opcion == "3":
             texto = input("Buscar: ").strip()
-            resultados = buscar(texto)
+
+            resultados = buscar_contactos(texto, CONTACTOS)
+
             if resultados:
                 print("\n--- Resultados ---")
                 for c in resultados:
