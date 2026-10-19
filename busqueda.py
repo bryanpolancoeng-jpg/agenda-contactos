@@ -1,6 +1,6 @@
 from rapidfuzz import fuzz, process
 
-UMBRAL_MINIMO = 70  
+UMBRAL_MINIMO = 60   
 
 
 def buscar_contactos(texto, contactos, limite=5):
